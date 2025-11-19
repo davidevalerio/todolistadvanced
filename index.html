@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>My To-Do List</h1> </header>
+
+    <main class="app-container">
+        
+        <section class="main-content">
+            <h2>Attività Correnti</h2>
+
+            <form id="new-task-form">
+                <input 
+                    type="text" 
+                    id="task-title-input" 
+                    placeholder="Nome attività (es. Studiare JS)" 
+                    required
+                >
+                <input 
+                    type="date" 
+                    id="task-due-date" 
+                    title="Data di scadenza"
+                >
+                <select id="task-priority-select" title="Priorità">
+                    <option value="low">Bassa</option>
+                    <option value="medium" selected>Media</option>
+                    <option value="high">Alta</option>
+                </select>
+                <button type="submit">Aggiungi Task</button>
+            </form>
+
+            <ul id="task-list" class="task-list">
+                </ul>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
