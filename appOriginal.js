@@ -79,7 +79,7 @@ function addTask(event) {
     const title = taskTitleInput.value.trim();
     const dueDate = taskDueDateInput.value;
     const priority = taskPrioritySelect.value;
-    
+
     if (title === "") {
         alert("Il titolo dell'attività non può essere vuoto!");
         return;
@@ -87,10 +87,10 @@ function addTask(event) {
 
     const newTask = new Task(title, priority, dueDate);
     tasks.push(newTask);
-    
-    saveTasks(); 
-    renderTasks(); 
-    
+
+    saveTasks();
+    renderTasks();
+
     newTaskForm.reset(); // Svuota i campi del form
 }
 
@@ -102,7 +102,7 @@ function addTask(event) {
 function deleteTask(taskId) {
     // Filtra l'array mantenendo solo i task con ID diverso da quello da eliminare
     tasks = tasks.filter(task => task.id !== taskId);
-    
+
     saveTasks();
     renderTasks();
 }
@@ -114,11 +114,11 @@ function deleteTask(taskId) {
  */
 function toggleTaskCompletion(taskId) {
     const taskIndex = tasks.findIndex(task => task.id === taskId);
-    
+
     if (taskIndex > -1) {
         // Inverte il valore booleano della proprietà 'isCompleted'
         tasks[taskIndex].isCompleted = !tasks[taskIndex].isCompleted;
-        
+
         saveTasks();
         renderTasks();
     }
@@ -132,7 +132,7 @@ function toggleTaskCompletion(taskId) {
 function startEdit(taskId) {
     const task = tasks.find(t => t.id === taskId);
     const li = document.querySelector(`[data-task-id="${taskId}"]`);
-    
+
     if (!task || !li) return;
 
     // Sostituisce il contenuto con i campi input per la modifica
