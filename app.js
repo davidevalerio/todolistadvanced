@@ -77,3 +77,41 @@ function deleteTask(taskId) {
 }
 
 // --- Completamento (Update Status) ---
+
+function toggleTaskCompletion(taskId) {
+    const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+    if (taskIndex > -1) {
+        tasks[taskIndex].isCompleted = !tasks[taskIndex].isCompleted;
+
+        saveTasks();
+        renderTasks();
+    }
+}
+
+// --- Modifica (Update Details - Inizia) ---
+
+function startEdit(taskId) {
+    const task = tasks.find(t => t.id === taskId);
+    const li = document.querySelector(`[data-task-id="${taskId}"]`);
+
+    if (!task || !li) return;
+
+    li.innerHTML = `
+        <div class="edit-form">
+            <input type="text" id="edit-title-${taskId}" value="${task.title}" required>
+            <input type="date" id="edit-date-${taskId}" value="${task.dueDate}">
+            <select id="edit-priority-${taskId}">
+                <option value="low" ${task.priority === 'low' ? 'selected' : ''}>Bassa</option>
+                <option value="medium" ${task.priority === 'medium' ? 'selected' : ''}>Media</option>
+                <option value="high" ${task.priority === 'high' ? 'selected' : ''}>Alta</option>
+            </select>
+        </div>
+        <div class="task-actions">
+            <button class="save-btn" data-action="save-edit">Salva</button>
+            <button class="cancel-btn" data-action="cancel-edit">Annulla</button>
+        </div>
+    `;
+
+    li.classList.add('editing');
+}
