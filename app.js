@@ -47,7 +47,7 @@ function loadTasks() {
 
 function addTask(event) {
 
-    event.preventDefault();
+    event.preventDefault(); // Blocca il comportamento predefinito del browser, che per un form sarebbe ricaricare l'intera pagina.
 
     const title = taskTitleInput.value.trim();
     const dueDate = taskDueDateInput.value;
@@ -114,4 +114,28 @@ function startEdit(taskId) {
     `;
 
     li.classList.add('editing');
+}
+
+// --- Modifica (Update Details - Salva) ---
+
+function saveEdit(taskId) {
+    const taskIndex = task.findIndex(t => t.id === taskId);
+
+    if (taskIndex > -1) {
+        const newTitle = document.getElementById(`edit-title-${taskId}`).value.trim();
+        const newDate = document.getElementById(`edit-date-${taskId}`).value;
+        const newPriority = document.getElementById(`edit-priority-${taskId}`).value;
+
+        if (newTitle === "") {
+            alert("Il titolo non puo essere vuoto!");
+            return;
+        }
+
+        tasks[taskIndex].title = newTitle;
+        tasks[taskIndex].date = newDate;
+        tasks[taskIndex].pdate = newPriority;
+
+        saveTasks();
+        renderTasks();
+    }
 }
