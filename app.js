@@ -133,9 +133,21 @@ function saveEdit(taskId) {
 
         tasks[taskIndex].title = newTitle;
         tasks[taskIndex].date = newDate;
-        tasks[taskIndex].pdate = newPriority;
+        tasks[taskIndex].priority = newPriority;
 
         saveTasks();
         renderTasks();
     }
+}
+
+// =================================================================
+// 4. DELEGAZIONE DI EVENTI PER LE AZIONI
+// =================================================================
+
+function handleTaskActions(event) {
+    const target = event.target;
+
+    const taskItem = target.closest('.task-item');
+
+    if(!taskItem) return;
 }
