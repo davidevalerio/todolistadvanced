@@ -150,4 +150,75 @@ function handleTaskActions(event) {
     const taskItem = target.closest('.task-item');
 
     if(!taskItem) return;
+
+    const taskId = parseInt(taskItem.getAttribute('data-task-id'));
+    const action = target.getAttribute('data-action');
+
+    switch (action) {
+        case 'delete':
+            deleteTask(taskId);
+            break;
+        case 'edit':
+            startEdit(taskId);
+            break;
+        case 'save-edit':
+            saveEdit(taskId);
+            break;
+        case 'cancel-edit':
+            renderTasks();
+            break;
+        case 'toggle-complete':
+            toggleTaskCompletion(taskId);
+            break;
+    }
 }
+
+// =================================================================
+// 5. RENDERING DEL DOM
+// =================================================================
+
+function createTaskElement(task) {
+
+    const li = document.createElement('li');
+    li.classList.add('task-item');
+    li.setAttribute('data-task-id', task.id);
+
+    li.classList.add(`priority-${task.priority}`);
+
+    li.innerHTML=`
+        <div class="task-details ${task.isCompleted ? 'completed' : ''}">
+            <input type="checkbox" ${task.isCompleted ? 'checked' : ''} data-action="toggle-complete">
+            <span class="task-title">${task.title}</span>
+            <span class="task-priority">Priorità: ${task.priority.toUpperCase()}</span>
+            <span class="task-date">Scadenza: ${task.dueDate || 'N/A'}</span>
+        </div>
+        <div class="task-actions">
+            <button class="edit-btn" data-action="edit">Modifica</button>
+            <button class="delete-btn" data-action="delete">Elimina</button>
+        </div>
+    `;
+
+    return li;
+}
+
+function renderTasks() {
+    taskList.innerHTML = '';
+
+    tasks.forEach(task => {
+        const taskElement = createTaskElement(task);
+        taskList.appendChild(taskElement);
+    });
+}
+
+// =================================================================
+// 6. FUNZIONE DI INIZIALIZZAZIONE
+// =================================================================
+
+function initApp() {
+    loadTasks();
+    renderTasks();
+    newTaskForm.addEventListener('submit', addTask);
+    taskList.addEventListener('click', handleTaskActions);
+}
+
+initApp();

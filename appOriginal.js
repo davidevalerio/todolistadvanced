@@ -279,10 +279,10 @@ function renderTasks() {
 function initApp() {
     // 1. Carica i task salvati da localStorage
     loadTasks();
-    
+
     // 2. Visualizza i task caricati
     renderTasks();
-    
+
     // 3. Aggiunge i listener:
     // Listener per l'aggiunta di nuovi task
     newTaskForm.addEventListener('submit', addTask);
