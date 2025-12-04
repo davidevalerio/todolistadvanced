@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <input id="new-task" type="text" placeholder="Cosa devi fare?">
+    <button id="new-task-btn">Aggiungi Task</button>
+    <button id="clear-btn">Pulisci</button>
+    <div id="todo"></div>
+
+    <script>
+        class TODOList{
+            constructor(){
+                this.tasks = [];
+                console.log("tasks", this.tasks);
+            }
+
+            aggiungiTask(task){
+                this.tasks.push(task);
+                console.log("tasks", this.tasks);
+
+                const todo = document.getElementById("todo");
+                const p = document.createElement("p");
+                p.appendChild(document.createTextNode(task));
+                todo.appendChild(p);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", ()=>{
+            const newTaskBtn = document.getElementById("new-task-btn");
+            const clearBtn = document.getElementById("clear-btn");
+            const input = document.getElementById("new-task");
+
+            const todoList = new TODOList()
+
+            newTaskBtn.addEventListener("click", ()=>{
+                todoList.aggiungiTask(input.value);
+            });
+            clearBtn.addEventListener("click", ()=>{
+                console.log("pulisci task");
+            });
+            input.addEventListener("keypress", (e)=>{
+                if(e.key === "Enter"){
+                    todoList.aggiungiTask(input.value);
+                    input.value = "";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

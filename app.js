@@ -119,7 +119,7 @@ function startEdit(taskId) {
 // --- Modifica (Update Details - Salva) ---
 
 function saveEdit(taskId) {
-    const taskIndex = task.findIndex(t => t.id === taskId);
+    const taskIndex = tasks.findIndex(t => t.id === taskId);
 
     if (taskIndex > -1) {
         const newTitle = document.getElementById(`edit-title-${taskId}`).value.trim();
