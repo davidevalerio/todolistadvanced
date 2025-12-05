@@ -136,8 +136,6 @@ console.log(objMixed);
 
 // Esercitati a usare lo spread per clonare oggetti e array.
 
-// Vantaggio React: Quando aggiornerai lo stato in React (es. setStato(nuovoStato)), dovrai quasi sempre usare l'operatore spread per creare un nuovo oggetto o array di stato, anziché mutare quello vecchio.
-
 const utente = {
     nome: "Suca",
     citta: "Roma",
