@@ -106,7 +106,7 @@ console.log(size); // dara errore perche non fa parte della destrutturazione.
 
 const datiTransazione = {
     data: "12/03/2025",
-    mittente : { nome: "Davide", cognome: "Valerio" },
+    mittente : { nome: "Davide", cognome: "Valeriazzo" },
     importo: 400.00,
 }
 
