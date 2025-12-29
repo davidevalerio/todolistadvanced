@@ -69,3 +69,38 @@ for (let letter of str) {
 }
 
 console.log(invertStr);
+
+// Esercizio 8
+
+const numeri = [1, 2, 3, 4, 5];
+let invertStr = "";
+
+for (let n of numeri) {
+    invertStr = " " + n + invertStr;
+}
+console.log(invertStr);
+
+// Esercizio 9
+
+const numeri = [1, 2, 3, 4, 5];
+let somma = 0;
+
+
+for (let n of numeri) {
+    somma += n;
+}
+
+console.log(somma / numeri.length);
+
+// Esercizio 10
+
+const str = "CiAo";
+let vocali = 0;
+
+for (let letter of str.toLowerCase()) {
+    if (letter === "a" || letter === "e" || letter === "i" || letter === "o" || letter === "u" ) {
+        vocali++;
+    }
+}
+
+console.log(vocali);
