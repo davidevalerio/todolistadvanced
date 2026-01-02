@@ -245,14 +245,39 @@ console.log(`Accesso dopo ${contatore} tentativi.`);
 
 const passwordCorretta = "pasticciotto";
 let password;
+let contatore = 0;
 
 do {
   password = prompt("Inserisci password");
+  contatore++;
+  if (passwordCorretta !== password && contatore < 3) {
+      alert(`Password sbagliata. Hai ancora ${3 - contatore} tentativi.`);
+  }
+}while (passwordCorretta !== password && contatore < 3);
 
-  if (passwordCorretta !== password) {
-      alert("Password sbagliata");
+if (password === passwordCorretta) {
+  console.log("Password corretta");
+} else {
+  console.log("Numero di tentativi esaurito. Riprovare piu tardi.");
+}
+
+// alternativa col break
+
+const passwordCorretta = "pasticciotto";
+let password;
+let contatore = 0;
+
+do {
+  password = prompt("Inserisci password");
+  contatore++;
+
+  if (password === passwordCorretta) {
+    console.log("Password corretta")
+    break;
   }
 
-} while (passwordCorretta !== password);
-
-console.log("Accesso consentito!");
+  if (contatore === 3) {
+    console.log("Numero massimo di tentativi raggiunto.");
+    break;
+  }
+} while (true);
