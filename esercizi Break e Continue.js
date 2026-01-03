@@ -102,3 +102,62 @@ for (let riga of matrice) {
         console.log(valore);
     }
 }
+
+// Esercizio Gemini 1
+
+const transazioni = [10, 25, null, 150, 2500, 30, 8000, 12];
+
+for (let valore of transazioni) {
+    if (valore === null) {
+        continue;
+    }
+    if (valore > 2000) {
+        break;
+    }
+    console.log(valore);
+}
+
+// Esercizio Gemini 2
+
+const gruppiInAttesa = [2, 4, 0, 3, 5, 2, 1];
+let tavoliOccupati = 0;
+
+for (let tavoli of gruppiInAttesa) {
+    if (tavoli === 0) {
+        console.log("Errore di sistema");
+        continue;
+    }
+    tavoliOccupati++;
+    console.log(`Prenotazione effettuata per tavolo da ${tavoli} posti.`);
+
+    if (tavoliOccupati === 4) {
+        console.log("Ristorante pieno. Chiudiamo le prenotazioni.");
+        break;
+    }
+}
+
+// Esercizio Gemini 3 3 scaffali, ogni scaffale ha 5 scatole
+
+const scaffali = [
+    [1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15],
+];
+
+for (let scaffale of scaffali) {
+    if (scaffale === scaffali[1]) {
+        console.log("--- Scaffale 2 riservato: SALTO ---");
+        continue;
+    }
+
+    console.log("--- Controllo Scaffale ---");
+
+    for (let scatola of scaffale) {
+        if (scatola === 4) {
+            console.log(`Scatola ${scatola} DANNEGGIATA! Passo allo scaffale successivo.`);
+            break;
+        }
+
+        console.log(`Scatola ${scatola}: OK`);
+    }
+}
