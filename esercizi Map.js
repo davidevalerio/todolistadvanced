@@ -23,10 +23,6 @@ const nomi = persone.map((persona) => persona.nome);
 
 console.log(nomi); // ["Alice", "Bob", "Carol"]
 
-const nomi = persone.map(x => x.nome);
-
-console.log(nomi);
-
 // Esercizio 4: Aggiungere un punto esclamativo a ogni stringa
 
 const nomi = ["Marco", "Spencer", "Sbiadao"];
@@ -221,4 +217,4 @@ const notificheGestite = notifiche.map(({ priorita, letta, ...resto }) => {
     };
 });
 
-console.log(notificheGestite)
+console.log(notificheGestite);
