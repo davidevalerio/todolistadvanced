@@ -150,3 +150,136 @@ const totaleOttimizzato = catalogo.reduce((acc, x) =>{
 console.log(totaleOttimizzato);
 
 // Esercizio Data Grouping
+
+const catalogo = [
+    { titolo: "Documentario Natura", views: 2500, durata: 45, isOriginal: false },
+    { titolo: "Serie Sci-Fi", views: 10000, durata: 60, isOriginal: true },
+    { titolo: "Tutorial Cucina", views: 500, durata: 15, isOriginal: false },
+    { titolo: "Recensione Tech", views: 1200, durata: 20, isOriginal: false },
+    { titolo: "Cortometraggio Indie", views: 3000, durata: 10, isOriginal: true }
+];
+
+const reportGuadagni = catalogo.reduce((acc, curr) => {
+    // 1. Calcola il guadagno del video corrente
+    // 2. Controlla se curr.isOriginal è true o false
+    // 3. Aggiorna la proprietà corretta dell'accumulatore (acc.original o acc.nonOriginal)
+    // 4. Ricorda di restituire l'accumulatore!
+    const guadagno = curr.durata * 60 * 0.05;
+
+    if (curr.isOriginal) {
+        acc.original += guadagno;
+    } else {
+        acc.nonOriginal += guadagno;
+    }
+    return acc;
+}, { original: 0, nonOriginal: 0 });
+
+console.log(reportGuadagni);
+
+// Esercizio Data Grouping 2
+
+const catalogo = [
+    { titolo: "Documentario Natura", tipo: "Educational", durata: 45 },
+    { titolo: "Serie Sci-Fi", tipo: "Entertainment", durata: 60 },
+    { titolo: "Tutorial Cucina", tipo: "Educational", durata: 15 },
+    { titolo: "Recensione Tech", tipo: "Tech", durata: 20 },
+    { titolo: "Cortometraggio Indie", tipo: "Entertainment", durata: 10 }
+];
+
+const reportGuadagni = catalogo.reduce((acc, curr) => {
+    const guadagno = curr.durata * 60 * 0.05;
+
+    if (!acc[curr.tipo]) {
+        acc[curr.tipo] = 0;
+    };
+
+    acc[curr.tipo] += guadagno;
+
+    return acc;
+}, {});
+
+console.log(reportGuadagni)
+
+// Esercizio Acc come contenitore
+
+const invitati = ["  mario ", "a", " LUCIA  ", "  pAolo", " ", "ELISA"];
+
+// SCRIVI QUI IL TUO CODICE:
+const listaPulita = invitati
+    .filter(nome => nome.trim().length > 2)
+    .map(nome => {
+        const n = nome.trim();
+        return n.charAt(0).toUpperCase() + n.slice(1).toLowerCase();
+    })
+    //.reduce. e' inutile utilizzare reduce in questo caso. meglio andare col join nel console.log
+
+console.log(listaPulita.join(", "));
+
+// Esercizio 
+
+const carrello = [
+    { prodotto: "Smartphone", prezzo: 500, disponibile: true },
+    { prodotto: "Cover", prezzo: 20, disponibile: true },
+    { prodotto: "Cuffie BT", prezzo: 150, disponibile: false }, // Non disponibile!
+    { prodotto: "Caricatore", prezzo: 30, disponibile: true },
+    { prodotto: "Pellicola", prezzo: 10, disponibile: false }  // Non disponibile!
+];
+
+// SCRIVI QUI IL TUO CODICE:
+
+const totaleScontato = carrello
+    .reduce((acc, curr) => {
+    const prezzoScontato = curr.prezzo * 0.9;
+
+        if (curr.disponibile) {
+            return acc += prezzoScontato
+        }
+
+        return acc;
+    }, 0);
+
+console.log(totaleScontato);
+
+const totaleScontato = carrello
+    .filter(item => item.disponibile)
+    .map(item => item.prezzo * 0.9)
+    .reduce((acc, curr) => {
+        return acc + curr;
+    }, 0);
+
+console.log(totaleScontato);
+
+// Esercizio
+
+const festival = [
+    { 
+        film: "Matrix Resurrections", 
+        genere: "Action", 
+        cast: [
+            { nome: "Keanu Reeves", cachet: 1000 },
+            { nome: "Carrie-Anne Moss", cachet: 800 }
+        ]
+    },
+    { 
+        film: "Il Glossario di CSS", 
+        genere: "Documentary", 
+        cast: [
+            { nome: "Uno Sviluppatore", cachet: 500 }
+        ]
+    },
+    { 
+        film: "John Wick 4", 
+        genere: "Action", 
+        cast: [
+            { nome: "Keanu Reeves", cachet: 1200 },
+            { nome: "Ian McShane", cachet: 700 }
+        ]
+    }
+];
+
+const movies = festival
+    .filter( item => item.genere === "Action" )
+    .flatMap( item => item.cast)
+    .reduce((acc, curr) => acc += curr.cachet, 0)
+
+console.log(movies);
