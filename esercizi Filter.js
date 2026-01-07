@@ -49,3 +49,32 @@ const reportOrdini = magazzino
 });
 
 console.log(reportOrdini);
+
+// Esercizio Gemini Filter Senior
+
+const catalogo = [
+    { id: 1, nome: "MacBook Pro", categoria: "Laptop", prezzo: 1200, disponibile: true },
+    { id: 2, nome: "iPhone 15", categoria: "Smartphone", prezzo: 900, disponibile: true },
+    { id: 3, nome: "Pixel 8", categoria: "Smartphone", prezzo: 700, disponibile: false },
+    { id: 4, nome: "Galaxy S23", categoria: "Smartphone", prezzo: 850, disponibile: true },
+    { id: 5, nome: "Dell XPS", categoria: "Laptop", prezzo: 950, disponibile: true },
+    { id: 6, nome: "iPad Air", categoria: "Tablet", prezzo: 600, disponibile: true }
+];
+
+// ESERCIZIO:
+// Crea 'prodottiFiltrati' usando filter().
+// Suggerimento Senior: Estrai le condizioni in variabili booleane dentro il filter 
+// o usa il destructuring per pulire la logica.
+
+const prodottiFiltrati = catalogo.filter(({ nome, categoria, prezzo, disponibile}) => {
+    // 1. Crea le tue variabili booleane (es. const isPrezzoGiusto = ...)
+    // 2. Ritorna true solo se TUTTE le condizioni sono vere
+    const isPrezzoGiusto = prezzo >= 500 && prezzo <= 1000;
+    const isDisponibile = disponibile === true;
+    const isSmartPC = categoria === "Laptop" || categoria === "Smartphone";
+    const isPIncluded = nome.toUpperCase().includes("P");
+
+    return isPrezzoGiusto && isDisponibile && isSmartPC && isPIncluded;
+});
+
+console.log(prodottiFiltrati);
