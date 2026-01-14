@@ -84,5 +84,32 @@
 
 // Esercizio 10
 
-document.querySelectorAll("#elementoPadre > *")
-  .forEach(figlio => figlio.classList.add("miaFamiglia"));
+// document.querySelectorAll("#elementoPadre > *").forEach(figlio => {
+//     figlio.classList.add("miaFamiglia");
+//     figlio.style.color="red";
+// });
+
+// Esercizio 11 Modifica solo per il primo figlio
+
+// const figlio = document.querySelector("#elementoPadre2 > *");
+// figlio.textContent = "Nuovo Testo per Primo Figlio"
+
+// Esercizio 11 Modifica solo per l'ultimo figlio
+
+// const figlio = document.querySelector("#elementoPadre2 > :nth-child(4");
+// figlio.textContent = "Nuovo Testo per Ultimo Figlio"
+
+// Esercizio 12 (l'ideale sarebbe farlo direttamente su CSS)
+
+// const elementoCorrente = document.querySelector("#elemento12");
+// const elementoSuccessivo = elementoCorrente.nextElementSibling;
+// elementoSuccessivo.style.color = "grey";
+
+// Esercizio 13
+
+const elementoCorrente = document.querySelector('#elemento13');
+const elementoPrecedente = elementoCorrente.previousElementSibling;
+elementoPrecedente.style.color = "green";
+
+
+
